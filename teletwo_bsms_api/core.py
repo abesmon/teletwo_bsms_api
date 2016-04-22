@@ -14,7 +14,7 @@ class TeleTwoReqError(Exception):
 
 class TeleTwoAPI:
     def __init__(self, partner_login, partner_password, sender_name):
-        self.TELE_TWO_API_HOST = 'http://bsms.tele2.ru/api/' # initial
+        self.TELE_TWO_API_HOST = 'https://bsms.tele2.ru/api/' # initial
 
         self.PARTNER_LOGIN = partner_login
         self.PARTNER_PASSWORD = partner_password
@@ -29,9 +29,6 @@ class TeleTwoAPI:
         if len(recipient_number) <> 11:
             raise RecipNumberError('Recipient phone number must be 11 digits long')
 
-        # привести сообщение к типизированному виду
-        message = message.decode("utf-8")
-
         payload = {
             'operation': 'send',
             'login': self.PARTNER_LOGIN,
@@ -42,6 +39,8 @@ class TeleTwoAPI:
         }
 
         r = requests.get(self.TELE_TWO_API_HOST, params=payload)
+
+        logging.info(r.url)
 
         logging.info(r.status_code, r.text)
 
