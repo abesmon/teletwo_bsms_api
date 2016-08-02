@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from setuptools import setup
+from distutils.core import setup
 
 setup(name='teletwo_bsms_api',
     version='0.0.1',
