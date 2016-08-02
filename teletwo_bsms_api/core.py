@@ -13,9 +13,8 @@ class TeleTwoReqError(Exception):
     pass
 
 class TeleTwoAPI:
+    TELE_TWO_API_HOST = 'https://bsms.tele2.ru/api/' # initial
     def __init__(self, partner_login, partner_password, sender_name):
-        self.TELE_TWO_API_HOST = 'https://bsms.tele2.ru/api/' # initial
-
         self.PARTNER_LOGIN = partner_login
         self.PARTNER_PASSWORD = partner_password
         self.SENDER_NAME = sender_name.decode('ascii')
